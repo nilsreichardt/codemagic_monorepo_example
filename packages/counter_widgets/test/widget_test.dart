@@ -14,8 +14,10 @@ void main() {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
-          body: CounterCard(
-            count: 2,
+          body: Center(
+            child: CounterCard(
+              count: 2,
+            ),
           ),
         ),
       ),
