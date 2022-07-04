@@ -1,0 +1,9 @@
+name: counter_lints
+version: 1.0.0
+description: Set of lint rules for Counter Dart and Flutter projects
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter_lints: ^2.0.1
