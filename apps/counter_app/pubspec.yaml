@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  counter_widgets:
+    path: ../../packages/counter_widgets
 
 dev_dependencies:
   flutter_test:
