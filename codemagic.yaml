@@ -1,0 +1,50 @@
+workflows:
+  ci:
+    name: CI 
+    instance_type: mac_mini
+    max_build_duration: 15
+    environment:
+      flutter: stable
+    triggering:
+      events:
+        - pull_request
+    scripts:
+      - name: Melos Bootstrap
+        script: |
+          # Add Dart to PATH
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
+          source ~/.bashrc
+
+          dart pub global activate melos
+          melos bootstrap
+
+      - name: Run Tests
+        script: |
+          # Add Dart to PATH
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
+          source ~/.bashrc
+
+          dart pub global activate melos
+          melos run test
+
+      - name: Run Format
+        script: |
+          # Add Dart to PATH
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
+          source ~/.bashrc
+
+          dart pub global activate melos
+          melos run format
+
+      - name: Run Tests
+        script: |
+          # Add Dart to PATH
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
+          source ~/.bashrc
+
+          dart pub global activate melos
+          melos run test
