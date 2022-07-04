@@ -1,0 +1,17 @@
+name: counter
+packages:
+  - "apps/**"
+  - "packages/**"
+
+scripts:
+  analyze:
+    run: melos exec -- "flutter analyze"
+    description: Run `flutter analyze` in all packages
+
+  format:
+    run: melos exec -- "flutter format . --set-exit-if-changed"
+    description: Run `flutter format .` in all packages
+
+  test:
+    run: melos exec --dir-exists=test -- "flutter test"
+    description: Run `flutter test` in all packages
