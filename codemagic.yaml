@@ -7,6 +7,17 @@ workflows:
     environment:
       # Using the latest Flutter version.
       flutter: stable
+    when:
+      changeset:
+        includes:
+          # Only run the CI when a file in one of the following directories
+          # changed.
+          - "apps/**"
+          - "packages/**"
+          - "codemagic.yaml"
+        excludes:
+          # Don't run the CI when only .md files changed.
+          - '**/*.md'
     # This workflow should trigger when a new pull request opens or updates.
     triggering:
       events:
