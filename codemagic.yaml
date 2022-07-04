@@ -45,3 +45,17 @@ workflows:
           source ~/.bashrc
 
           melos run test
+          # Upload results of failed golden tests if test command failed.
+          if [ $? -ne 0 ]; then
+            # Finds all "failures" folders and copies them to the export
+            # directory. Therefore, we are able to the view the results of the
+            # failed golden tests.
+            #
+            # The command will use the exit code 0 (success) even when there are
+            # no failures folders.
+            find * -path '**/failures' -execdir bash -c "cp -r failures $FCI_EXPORT_DIR" \;
+            
+            # Because we caught the exit code of the test command, we need to
+            # set manually again.
+            exit 1
+          fi
