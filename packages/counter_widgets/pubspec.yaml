@@ -1,0 +1,20 @@
+name: counter_widgets
+description: Widgets for the Counter App.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.5 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  counter_lints:
+    path: ../counter_lints
+
+flutter:
+  uses-material-design: true
