@@ -29,7 +29,6 @@ workflows:
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
           source ~/.bashrc
 
-          dart pub global activate melos
           melos run test
 
       - name: Run Format
@@ -39,7 +38,6 @@ workflows:
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
           source ~/.bashrc
 
-          dart pub global activate melos
           melos run format
 
       - name: Run Tests
@@ -49,5 +47,4 @@ workflows:
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
           source ~/.bashrc
 
-          dart pub global activate melos
           melos run test
