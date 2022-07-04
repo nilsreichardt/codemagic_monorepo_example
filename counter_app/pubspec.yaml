@@ -9,13 +9,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  counter_lints:
-    path: ../../packages/counter_lints
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  counter_lints:
+    path: ../../packages/counter_lints
 
 flutter:
   uses-material-design: true
