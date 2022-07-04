@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  counter_lints:
+    path: ../../packages/counter_lints
 
 dev_dependencies:
   flutter_test:
