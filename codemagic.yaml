@@ -23,10 +23,25 @@ workflows:
           melos bootstrap
 
       - name: Run Tests
-        script: $FLUTTER_ROOT/.pub-cache/bin/melos run test
+        script: |
+          # Add Dart to PATH
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          source ~/.bashrc
+
+          $FLUTTER_ROOT/.pub-cache/bin/melos run test
 
       - name: Run Format
-        script: $FLUTTER_ROOT/.pub-cache/bin/melos run format
+        script: |
+          # Add Dart to PATH
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          source ~/.bashrc
+
+          melos run format
 
       - name: Run Tests
-        script: $FLUTTER_ROOT/.pub-cache/bin/melos run test
+        script: |
+          # Add Dart to PATH
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          source ~/.bashrc
+
+          melos run test
