@@ -3,6 +3,14 @@ packages:
   - "apps/**"
   - "packages/**"
 
+# Recommended option for projects with Dart 2.17.0 or greater.
+#
+# This enables a new mechanism for linking local packages, which integrates better with other tooling (e.g. dart tool, flutter tool, IDE plugins) than the mechanism currently being used by default. Please read the documentation for usePubspecOverrides before enabling this feature.
+# See https://melos.invertase.dev/getting-started#setup
+command:
+  bootstrap:
+    usePubspecOverrides: true
+
 scripts:
   analyze:
     run: melos exec -- "flutter analyze"

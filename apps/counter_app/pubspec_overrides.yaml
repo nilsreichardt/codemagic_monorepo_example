@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: counter_lints,counter_widgets
+dependency_overrides:
+  counter_lints:
+    path: ../../packages/counter_lints
+  counter_widgets:
+    path: ../../packages/counter_widgets
