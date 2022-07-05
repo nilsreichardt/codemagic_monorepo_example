@@ -17,19 +17,20 @@ workflows:
           - "codemagic.yaml"
         excludes:
           # Don't run the CI when only .md files changed.
-          - '**/*.md'
+          - "**/*.md"
     # This workflow should trigger when a new pull request opens or updates.
     triggering:
       events:
         - pull_request
     scripts:
-      - name: Melos Bootstrap
+      - name: Add Dart SDK to PATH
         script: |
-          # Add Dart to PATH
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.zshrc 
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.zshrc 
           source ~/.zshrc
 
+      - name: Melos Bootstrap
+        script: |
           dart pub global activate melos
           melos bootstrap
 
@@ -42,13 +43,13 @@ workflows:
       - name: Run Format
         script: |
           source ~/.zshrc
-          
+
           melos run format
 
       - name: Run Tests
         script: |
           source ~/.zshrc
-          
+
           melos run test
           # Upload results of failed golden tests if test command failed.
           if [ $? -ne 0 ]; then
