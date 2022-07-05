@@ -27,31 +27,26 @@ workflows:
         script: |
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.zshrc 
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.zshrc 
-          source ~/.zshrc
 
       - name: Melos Bootstrap
         script: |
           source ~/.zshrc
-          
           dart pub global activate melos
           melos bootstrap
 
       - name: Run Analyze
         script: |
           source ~/.zshrc
-
           melos run analyze
 
       - name: Run Format
         script: |
           source ~/.zshrc
-
           melos run format
 
       - name: Run Tests
         script: |
           source ~/.zshrc
-
           melos run test
           # Upload results of failed golden tests if test command failed.
           if [ $? -ne 0 ]; then
