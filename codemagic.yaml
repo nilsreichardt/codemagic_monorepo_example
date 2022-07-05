@@ -30,6 +30,8 @@ workflows:
 
       - name: Melos Bootstrap
         script: |
+          env | grep PATH
+
           dart pub global activate melos
           melos bootstrap
 
