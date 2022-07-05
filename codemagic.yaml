@@ -25,8 +25,8 @@ workflows:
     scripts:
       - name: Add Dart SDK to PATH
         script: |
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.zshrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.zshrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
 
       - name: Melos Bootstrap
         script: |
