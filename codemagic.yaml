@@ -26,38 +26,21 @@ workflows:
       - name: Melos Bootstrap
         script: |
           # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.zshrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.zshrc 
+          source ~/.zshrc
 
           dart pub global activate melos
           melos bootstrap
 
       - name: Run Analyze
-        script: |
-          # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
-
-          melos run analyze
+        script: melos run analyze
 
       - name: Run Format
-        script: |
-          # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
-
-          melos run format
+        script: melos run format
 
       - name: Run Tests
         script: |
-          # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
-
           melos run test
           # Upload results of failed golden tests if test command failed.
           if [ $? -ne 0 ]; then
