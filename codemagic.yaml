@@ -30,23 +30,23 @@ workflows:
 
       - name: Melos Bootstrap
         script: |
-          #!/bin/bash
+          source ~/.bashrc
           dart pub global activate melos
           melos bootstrap
 
       - name: Run Analyze
         script: |
-          #!/bin/bash
+          source ~/.bashrc
           melos run analyze
 
       - name: Run Format
         script: |
-          #!/bin/bash
+          source ~/.bashrc
           melos run format
 
       - name: Run Tests
         script: |
-          #!/bin/bash
+          source ~/.bashrc
           melos run test
           # Upload results of failed golden tests if test command failed.
           if [ $? -ne 0 ]; then
