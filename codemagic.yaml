@@ -25,34 +25,29 @@ workflows:
     scripts:
       - name: Melos Bootstrap
         script: |
-          #!/bin/bash
-
           # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.zshrc 
+          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.zshrc 
+          source ~/.zshrc
 
           dart pub global activate melos
           melos bootstrap
 
       - name: Run Analyze
         script: |
-          #!/bin/bash
-          source ~/.bashrc
+          source ~/.zshrc
 
           melos run analyze
 
       - name: Run Format
         script: |
-          #!/bin/bash
-          source ~/.bashrc
+          source ~/.zshrc
           
           melos run format
 
       - name: Run Tests
         script: |
-          #!/bin/bash
-          source ~/.bashrc
+          source ~/.zshrc
           
           melos run test
           # Upload results of failed golden tests if test command failed.
