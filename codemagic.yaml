@@ -33,14 +33,14 @@ workflows:
           dart pub global activate melos
           melos bootstrap
 
-      - name: Run Tests
+      - name: Run Analyze
         script: |
           # Add Dart to PATH
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
           echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
           source ~/.bashrc
 
-          $FLUTTER_ROOT/.pub-cache/bin/melos run test
+          melos run analyze
 
       - name: Run Format
         script: |
