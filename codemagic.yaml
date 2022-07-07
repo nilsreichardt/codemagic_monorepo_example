@@ -17,48 +17,32 @@ workflows:
           - "codemagic.yaml"
         excludes:
           # Don't run the CI when only .md files changed.
-          - '**/*.md'
+          - "**/*.md"
     # This workflow should trigger when a new pull request opens or updates.
     triggering:
       events:
         - pull_request
     scripts:
+      - name: Add Dart SDK to PATH
+        script: |
+          echo PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin" >> $CM_ENV
+          echo PATH="$PATH":"$FLUTTER_ROOT/bin" >> $CM_ENV
+
       - name: Melos Bootstrap
         script: |
-          # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
-
           dart pub global activate melos
           melos bootstrap
 
       - name: Run Analyze
-        script: |
-          # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
-
-          melos run analyze
+        script: melos run analyze
 
       - name: Run Format
-        script: |
-          # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
-
-          melos run format
+        script: melos run format
 
       - name: Run Tests
         script: |
-          # Add Dart to PATH
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.bashrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.bashrc 
-          source ~/.bashrc
-
           melos run test
+          
           # Upload results of failed golden tests if test command failed.
           if [ $? -ne 0 ]; then
             # Finds all "failures" folders and copies them to the export
