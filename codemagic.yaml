@@ -25,28 +25,22 @@ workflows:
     scripts:
       - name: Add Dart SDK to PATH
         script: |
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin"' >>~/.zshrc 
-          echo 'export PATH="$PATH":"$FLUTTER_ROOT/bin"' >>~/.zshrc 
+          echo PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin" >> $CM_ENV
+          echo PATH="$PATH":"$FLUTTER_ROOT/bin" >> $CM_ENV
 
       - name: Melos Bootstrap
         script: |
-          source ~/.zshrc
           dart pub global activate melos
           melos bootstrap
 
       - name: Run Analyze
-        script: |
-          source ~/.zshrc
-          melos run analyze
+        script: melos run analyze
 
       - name: Run Format
-        script: |
-          source ~/.zshrc
-          melos run format
+        script: melos run format
 
       - name: Run Tests
         script: |
-          source ~/.zshrc
           melos run test
           # Upload results of failed golden tests if test command failed.
           if [ $? -ne 0 ]; then
