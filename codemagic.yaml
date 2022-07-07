@@ -42,6 +42,7 @@ workflows:
       - name: Run Tests
         script: |
           melos run test
+          
           # Upload results of failed golden tests if test command failed.
           if [ $? -ne 0 ]; then
             # Finds all "failures" folders and copies them to the export
