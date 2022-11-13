@@ -23,11 +23,6 @@ workflows:
       events:
         - pull_request
     scripts:
-      - name: Add Dart SDK to PATH
-        script: |
-          echo PATH="$PATH":"$FLUTTER_ROOT/.pub-cache/bin" >> $CM_ENV
-          echo PATH="$PATH":"$FLUTTER_ROOT/bin" >> $CM_ENV
-
       - name: Melos Bootstrap
         script: |
           dart pub global activate melos
